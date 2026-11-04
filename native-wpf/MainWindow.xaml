@@ -1,0 +1,73 @@
+<Window x:Class="DeepSeekPet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="大肥鱼"
+        Width="320" Height="420"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize"
+        WindowStartupLocation="Manual" UseLayoutRounding="True">
+
+  <Grid x:Name="Root" Width="320" Height="420" Background="Transparent">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="132"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!-- speech bubble -->
+    <Grid x:Name="BubbleLayer" Grid.Row="0" Opacity="0" IsHitTestVisible="False">
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,4">
+        <Border x:Name="BubbleBorder" Background="#F8FAFF" BorderBrush="#3F6BF0" BorderThickness="2"
+                CornerRadius="16" Padding="13,8,13,9" MaxWidth="296" MinWidth="56">
+          <Border.Effect>
+            <DropShadowEffect Color="#25437F" BlurRadius="16" ShadowDepth="2" Opacity="0.32"/>
+          </Border.Effect>
+          <Grid>
+            <TextBlock x:Name="BubbleSizer" TextWrapping="Wrap" MaxWidth="258"
+                       FontFamily="Microsoft YaHei UI" FontSize="13.5" Foreground="#16203F"
+                       LineHeight="20" Opacity="0" IsHitTestVisible="False"/>
+            <TextBlock x:Name="BubbleText" TextWrapping="Wrap" MaxWidth="258"
+                       FontFamily="Microsoft YaHei UI" FontSize="13.5" Foreground="#16203F"
+                       LineHeight="20"/>
+          </Grid>
+        </Border>
+        <Path Data="M 0,0 L 14,0 L 7,10 Z" Fill="#F8FAFF" Stroke="#3F6BF0" StrokeThickness="2"
+              StrokeLineJoin="Round" Margin="0,-3,0,0" HorizontalAlignment="Center"/>
+      </StackPanel>
+    </Grid>
+
+    <!-- the pet itself -->
+    <Grid x:Name="PetLayer" Grid.Row="1" RenderTransformOrigin="0.5,1" Background="Transparent">
+      <Grid.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform x:Name="SquashS" ScaleX="1" ScaleY="1"/>
+          <RotateTransform x:Name="TiltR" Angle="0"/>
+          <TranslateTransform x:Name="MoveT" X="0" Y="0"/>
+        </TransformGroup>
+      </Grid.RenderTransform>
+
+      <Ellipse x:Name="Shadow" Width="132" Height="22" VerticalAlignment="Bottom" Margin="0,0,0,4" Opacity="0.30">
+        <Ellipse.Fill>
+          <RadialGradientBrush>
+            <GradientStop Offset="0" Color="#0E1E44"/>
+            <GradientStop Offset="0.65" Color="#550E1E44"/>
+            <GradientStop Offset="1" Color="#000E1E44"/>
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+        <Ellipse.Effect>
+          <BlurEffect Radius="8"/>
+        </Ellipse.Effect>
+      </Ellipse>
+
+      <Image x:Name="PetImage" VerticalAlignment="Bottom" Height="262" Margin="0,0,0,10"
+             Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"
+             SnapsToDevicePixels="False"/>
+
+      <!-- 打呼噜 -->
+      <Canvas x:Name="ZzzGroup" Width="110" Height="90" HorizontalAlignment="Right" VerticalAlignment="Top"
+              Margin="0,30,24,0" Opacity="0" IsHitTestVisible="False">
+        <TextBlock x:Name="Zzz1" Text="z" FontFamily="Segoe UI" FontSize="28" FontWeight="Bold" Foreground="#9EB1F0"/>
+        <TextBlock x:Name="Zzz2" Text="z" FontFamily="Segoe UI" FontSize="19" FontWeight="Bold" Foreground="#B9C6F5"/>
+      </Canvas>
+    </Grid>
+  </Grid>
+</Window>

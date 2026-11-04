@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>DeepSeekPet</AssemblyName>
+    <RootNamespace>DeepSeekPet</RootNamespace>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="assets\**\*.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- _probe 只是临时诊断工具，不要编进宠物本体 -->
+  <ItemGroup>
+    <Compile Remove="_probe\**" />
+    <None Remove="_probe\**" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+pet-settings.json
+pet-error.log
+_o.log
+_e.log
+preview/
+_tools/
+*.log
